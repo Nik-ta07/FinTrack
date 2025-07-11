@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Transaction - FinTrack</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .sticky-header { position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(44,62,89,0.08); }
+        .brand-logo { font-family: 'Pacifico', 'Poppins', cursive, sans-serif; font-weight: 500; font-size: 2rem; letter-spacing: 1px; color: #00C9A7 !important; text-shadow: 0 2px 8px #2E3A5911; }
+        .modern-card { border-radius: 1rem; box-shadow: 0 4px 24px rgba(44,62,89,0.08); background: #fff; }
+    </style>
+</head>
+<body style="background: linear-gradient(135deg, #F2F6FC 60%, #E0F7FA 100%);">
+    <nav class="navbar navbar-dark sticky-header" style="background-color: #2E3A59;">
+        <div class="container-fluid">
+            <span class="navbar-brand brand-logo">FinTrack</span>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="modern-card p-4 mx-auto" style="max-width: 500px;">
+            <h2 class="mb-4 text-center">Edit Transaction</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }} rounded-pill text-center">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <form method="post">
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control rounded-pill" id="date" name="date" value="{{ transaction[1] }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount</label>
+                    <input type="number" step="0.01" class="form-control rounded-pill" id="amount" name="amount" value="{{ transaction[3] }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <select class="form-select rounded-pill" id="type" name="type" required>
+                        <option value="Income" {% if transaction[4] == 'Income' %}selected{% endif %}>Income</option>
+                        <option value="Expense" {% if transaction[4] == 'Expense' %}selected{% endif %}>Expense</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select rounded-pill" id="category" name="category" required>
+                        {% for cat in categories %}
+                        <option value="{{ cat }}" {% if transaction[5] == cat %}selected{% endif %}>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success rounded-pill px-4">Save</button>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary rounded-pill px-4">Back to Dashboard</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 

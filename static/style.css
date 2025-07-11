@@ -1,0 +1,86 @@
+body {
+    background-color: #F2F6FC;
+    color: #222;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #2E3A59 !important;
+    box-shadow: 0 2px 8px rgba(44,62,89,0.08);
+}
+
+.btn-primary, .btn-success, .btn-info, .btn-warning, .btn-outline-secondary {
+    border-radius: 0.75rem;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-info:hover, .btn-warning:hover, .btn-outline-secondary:hover {
+    box-shadow: 0 4px 16px rgba(0,201,167,0.15);
+    filter: brightness(1.08);
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.btn-info {
+    background-color: #00C9A7;
+    border: none;
+}
+
+.btn-warning {
+    background-color: #FFD600;
+    color: #222;
+}
+
+a, .accent {
+    color: #00C9A7;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover, .accent:hover {
+    color: #1E88E5;
+}
+
+h2, .navbar-brand {
+    color: #2E3A59;
+}
+
+.table thead {
+    background-color: #00C9A7;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f7fafc;
+}
+
+.table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(44,62,89,0.04);
+}
+
+input, select, .form-control, .form-select {
+    border-radius: 0.75rem !important;
+    border: 1px solid #e0e0e0;
+    box-shadow: none;
+    transition: border 0.2s;
+}
+input:focus, select:focus, .form-control:focus, .form-select:focus {
+    border-color: #00C9A7;
+    box-shadow: 0 0 0 2px #00C9A733;
+}
+
+.alert {
+    border-radius: 0.75rem;
+    font-size: 1rem;
+}
+
+.modern-card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(44,62,89,0.08);
+    background: #fff;
+} 
